@@ -1,15 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import HomeDashboard from './pages/home';
+import AddDashboardWidget from './pages/addDashboardWidget';
 import NavigationHeader from './components/NavigationHeader';
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
 
 const App = () => {
   return (
@@ -17,14 +10,11 @@ const App = () => {
       <Router>
         <NavigationHeader />
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route exact path="/">
+            <HomeDashboard />
           </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
+          <Route path="/add-dashboard-widget">
+            <AddDashboardWidget />
           </Route>
         </Switch>
       </Router>
