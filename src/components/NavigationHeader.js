@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const NavigationHeader = () => {
   return (
@@ -16,7 +16,7 @@ const NavigationHeader = () => {
             </Link>
             <Link
               className="text-decoration-none fw-bold"
-              to="/add-dashboard-widget"
+              to="/custom-dashboard"
             >
               Custom Chart
             </Link>
