@@ -54,7 +54,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #ececec;
-  background-color: #00000d;
+  background-color: #00001b;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -591,7 +591,7 @@ progress {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #00000d;
+  background-color: #00001b;
   border: 1px solid #dee2e6;
   border-radius: 0.5rem;
   max-width: 100%;
@@ -2924,12 +2924,12 @@ textarea.form-control-lg {
 }
 
 .form-range:focus::-webkit-slider-thumb {
-  -webkit-box-shadow: 0 0 0 1px #00000d, 0 0 0 0.25rem rgba(46, 97, 138, 0.25);
-          box-shadow: 0 0 0 1px #00000d, 0 0 0 0.25rem rgba(46, 97, 138, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #00001b, 0 0 0 0.25rem rgba(46, 97, 138, 0.25);
+          box-shadow: 0 0 0 1px #00001b, 0 0 0 0.25rem rgba(46, 97, 138, 0.25);
 }
 
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #00000d, 0 0 0 0.25rem rgba(46, 97, 138, 0.25);
+  box-shadow: 0 0 0 1px #00001b, 0 0 0 0.25rem rgba(46, 97, 138, 0.25);
 }
 
 .form-range::-moz-focus-outer {
@@ -4622,8 +4622,8 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #00000d;
-  border-color: #dee2e6 #dee2e6 #00000d;
+  background-color: #00001b;
+  border-color: #dee2e6 #dee2e6 #00001b;
 }
 
 .nav-tabs .dropdown-menu {
@@ -5309,7 +5309,7 @@ fieldset:disabled .btn {
   font-size: 1rem;
   color: #ececec;
   text-align: left;
-  background-color: #00000d;
+  background-color: #00001b;
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -5379,7 +5379,7 @@ fieldset:disabled .btn {
 }
 
 .accordion-item {
-  background-color: #00000d;
+  background-color: #00001b;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -9338,7 +9338,7 @@ fieldset:disabled .btn {
 }
 
 .bg-body {
-  background-color: #00000d !important;
+  background-color: #00001b !important;
 }
 
 .bg-white {
@@ -14749,6 +14749,11 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 .grid-item__title {

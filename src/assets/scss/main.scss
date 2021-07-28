@@ -4,6 +4,11 @@
 @import '../../../node_modules/bootstrap/scss/_functions.scss';
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .grid-item__title {
   font-size: 14px;
   color: #fff;

@@ -65,7 +65,7 @@ const DashboardPieChart = () => {
           cx="50%"
           cy="50%"
           outerRadius={50}
-          fill="#8884d8"
+          fill="#00001b"
         />
         <Pie
           data={data02}
@@ -75,7 +75,7 @@ const DashboardPieChart = () => {
           cy="50%"
           innerRadius={60}
           outerRadius={80}
-          fill="#82ca9d"
+          fill="#2e618a"
           label
         />
       </PieChart>

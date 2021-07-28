@@ -68,8 +68,8 @@ const DashboardLineChart = (props) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="pv" stroke="#2e618a" />
+        <Line type="monotone" dataKey="uv" stroke="#00001b" />
       </LineChart>
     </ResponsiveContainer>
   );
