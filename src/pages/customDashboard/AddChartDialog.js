@@ -15,6 +15,7 @@ import Slide from '@material-ui/core/Slide';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import { TextField } from '@material-ui/core';
 
 import XLSX from 'xlsx';
 
@@ -30,9 +31,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { TextField } from '@material-ui/core';
 
 import darkColorGenerator from '../../utils/darkColorGenerator';
+import CHART_TYPES from '../../constants/chartTypes';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -59,8 +60,9 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
     lines: [],
   });
 
+  const [chartType, setChartTypes] = useState(CHART_TYPES.line);
+
   const getFile = async (event) => {
-    console.log(data);
     if (event.target.files.length > 0) {
       const files = event.target.files;
       const f = files[0];
@@ -83,6 +85,16 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
 
   const handleBaseChange = ({ target: { name, value } }) => {
     setInputs({ ...inputs, [name]: value });
+  };
+
+  const sizeFormatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Submit clicked');
   };
 
   return (
@@ -127,7 +139,9 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
                     <dd className="col-sm-9">: {fileInfo.name}</dd>
 
                     <dt className="col-sm-3">Size</dt>
-                    <dd className="col-sm-9">: {fileInfo.size / 1000} MB</dd>
+                    <dd className="col-sm-9">
+                      : {sizeFormatter.format(fileInfo.size / 1000000)} MB
+                    </dd>
 
                     <dt className="col-sm-3">Type</dt>
                     <dd className="col-sm-9">: {fileInfo.type}</dd>
@@ -148,6 +162,28 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
               {data.length > 0 && (
                 <>
                   <div className="mt-4" style={{ minHeight: '300px' }}>
+                    <div className="d-flex align-items-center mb-4">
+                      <h5 className="m-0 me-4">Chart Type</h5>
+                      <ButtonGroup
+                        color="primary"
+                        aria-label="outlined primary button group"
+                      >
+                        {Object.keys(CHART_TYPES).map((key) => (
+                          <Button
+                            key={key}
+                            variant={
+                              chartType === CHART_TYPES[key]
+                                ? 'contained'
+                                : 'outlined'
+                            }
+                            onClick={() => setChartTypes(CHART_TYPES[key])}
+                            className="text-capitalize"
+                          >
+                            {key}
+                          </Button>
+                        ))}
+                      </ButtonGroup>
+                    </div>
                     <ResponsiveContainer width="100%" height={300}>
                       <LineChart data={data}>
                         <CartesianGrid strokeDasharray="3 3" />
@@ -169,26 +205,18 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
-                  <div className="row mt-5">
-                    <div className="d-flex align-items-center">
-                      <h5 className="m-0 me-4">Chart Type</h5>
-                      <ButtonGroup
-                        color="primary"
-                        aria-label="outlined primary button group"
-                      >
-                        <Button variant="contained">Line</Button>
-                        <Button variant="contained">Bar</Button>
-                        <Button variant="contained">Pie</Button>
-                      </ButtonGroup>
-                    </div>
-                  </div>
-                  <div className="row gx-5 gy-4 pt-3">
+                  {/* <div className="row mt-5">
+                    
+                  </div> */}
+                  {/* <div className="row gx-5 gy-4 pt-3"> */}
+                  <form className="row gx-5 gy-4 pt-3" onSubmit={handleSubmit}>
                     <div className="col-12">
                       <TextField
                         id="title"
                         label="Chart Title"
                         name="title"
                         fullWidth
+                        required
                         onInput={handleBaseChange}
                       />
                     </div>
@@ -200,6 +228,7 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
                         name="xAxis"
                         value={inputs.xAxis}
                         fullWidth
+                        required
                         onChange={handleBaseChange}
                       >
                         {Object.keys(data[0]).map((key) => (
@@ -238,6 +267,7 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
                         multiple
                         value={inputs.lines}
                         fullWidth
+                        required
                         onChange={handleBaseChange}
                       >
                         {Object.keys(data[0]).map((key) => (
@@ -247,7 +277,18 @@ const AddChartDialog = ({ toggleDialog, isOpen }) => {
                         ))}
                       </Select>
                     </div>
-                  </div>
+                    <div className="col-12">
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        type="submit"
+                        className="w-100"
+                      >
+                        Submit
+                      </Button>
+                    </div>
+                  </form>
+                  {/* </div> */}
                 </>
               )}
             </div>
